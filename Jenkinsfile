@@ -9,13 +9,13 @@ pipeline {
         stage('Build') {
             steps{
                 echo 'Building Code'
-                sh './gradle build'
+                sh './gradlew build'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing JUnit'
-                sh './gradle test'
+                sh './gradlew test'
             }
             post {
                 always {
