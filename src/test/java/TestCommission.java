@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,9 +40,9 @@ public class TestCommission {
     @Test
     public void testGetCommissionEnterWhileLoop() {
         when(lock.getCount()).thenReturn(5);
-        Lock l = spy(new Lock())
+        Lock l = spy(new Lock(5));
         CalculateCommission c = new CalculateCommission();
-        double com = c.getCommission(, new Stock(5), new Barrel(5));
+        double com = c.getCommission(lock,stock,barrel);
         Assert.assertEquals(520.0, com, 0);
 
 
